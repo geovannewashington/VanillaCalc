@@ -43,6 +43,8 @@ button {
     font-weight: bold;
     cursor: pointer;
     color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
 }
 
 button:hover {
