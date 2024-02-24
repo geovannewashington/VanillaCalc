@@ -12,6 +12,8 @@ const localScope = function() {
         //prevent from putting a new operator following an existing operator
         const isLastCharOperator = ['+', '-', '×', '÷'].includes(lastDigit);
         if (isLastCharOperator && ['+', '-', '×', '÷'].includes(inputValue)) {
+            const arrayOfDigits = displayValues.slice(0, -1) + inputValue;
+            display.value = arrayOfDigits;
             return;
         }
         display.value += inputValue;    
