@@ -1,3 +1,8 @@
+:root {
+    --background-color: #010101;
+    --btn-background: #171717;
+}   
+
 body {
     margin: 0;
     display: flex;
@@ -9,7 +14,7 @@ body {
 
 #calculator {
     font-family: Arial, sans-serif;
-    background-color: hsl(0, 0%, 15%);
+    background-color: var(--background-color);
     border-radius: 15px;
     max-width: 500px;
     overflow: hidden;
@@ -17,12 +22,14 @@ body {
 }
 
 #display {
-    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: 92%;
     padding: 20px;
     font-size: 5rem;
-    text-align: left;
+    text-align: right;
     border: none;
-    background-color: hsl(0, 0%, 20%);
+    background-color: var(--background-color);
     color: #fff;
 }
 
@@ -38,7 +45,7 @@ button {
     height: 100px;
     border-radius: 50px;
     border: none;
-    background-color: hsl(0, 0%, 30%);
+    background-color: var(--btn-background);
     font-size: 3rem;
     font-weight: bold;
     cursor: pointer;
@@ -48,11 +55,11 @@ button {
 }
 
 button:hover {
-    background-color: hsl(0, 0%, 40%);
+    background-color: hsl(0, 0%, 12%);
 }
 
 button:active {
-    background-color: hsl(0, 0%, 60%);
+    background-color: hsl(0, 0%, 20%);
     font-size: 2.0rem;
     transition: 40ms;
 }
