@@ -51,7 +51,7 @@ button {
     cursor: pointer;
     color: #fff;
     -webkit-tap-highlight-color: transparent;
-    tap-highlight-color: transparent;
+    -tap-highlight-color: transparent;
 }
 
 button:hover {
@@ -64,10 +64,3 @@ button:active {
     transition: 40ms;
 }
 
-#clear-btn {
-    color: hsl(9, 76%, 59%);
-}
-
-.operator-btn {
-    color: hsl(115, 100%, 56%);
-}
