@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const appendToDisplay = value => {
         const lastDigit = display.value.slice(-1);
-        autoScroll();
-
+        
         const isLastCharOperator = ['+', '-', '×', '÷'].includes(lastDigit);
         if (isLastCharOperator && ['+', '-', '×', '÷'].includes(value)) {
             deleteLastChar();
         }
         display.value += value;
+        autoScroll();
     };
 
     const clearDisplay = () => display.value = '';
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#keys').addEventListener('click', (event) => {
             const el = event.target.closest('.btn, .btn-clear, .btn-delete, .btn-solve');
             if (!el) return;
-            
+
             if (el.classList.contains('btn')) appendToDisplay(el.innerText);
             if (el.classList.contains('btn-clear')) clearDisplay();
             if (el.classList.contains('btn-delete')) deleteLastChar();
