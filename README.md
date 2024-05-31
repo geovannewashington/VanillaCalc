@@ -11,6 +11,7 @@ To clone the repository and have a local copy of the calculator, use the followi
 ```bash
 git clone https://github.com/geovannewashington/SimpleCalcJS-v1.5.git
 cd SimpleCalcJS-v1.5
+```
 
 ## Test on CodePen
 
