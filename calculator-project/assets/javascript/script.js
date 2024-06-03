@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const performCalc = () => {
         try {
-            const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
+            const result = eval(display.value.replace(/÷/, "/").replace(/×/, "*"));
             if (result === undefined || result === null || isNaN(result)) {
                 alert('Invalid Operation!');
                 return;
@@ -38,15 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const pressBackspace = () => {
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Backspace') {
-                deleteLastChar();
-                display.focus();
-            }
-        });
-    };
-
     const handleButtonClick = () => {
         document.querySelector('#keys').addEventListener('click', (event) => {
             const el = event.target.closest('.btn, .btn-clear, .btn-delete, .btn-solve');
@@ -60,6 +51,5 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     pressEnter();
-    pressBackspace();
     handleButtonClick();
 });
