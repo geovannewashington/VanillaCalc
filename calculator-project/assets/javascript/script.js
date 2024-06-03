@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const performCalc = () => {
         try {
-            const result = eval(display.value.replace(/÷/, "/").replace(/×/, "*"));
+            const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
             if (result === undefined || result === null || isNaN(result)) {
                 alert('Invalid Operation!');
                 return;
