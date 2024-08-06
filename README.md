@@ -3,7 +3,7 @@
 ## Introduction
 This is version 1.5 of my calculator, developed with HTML, CSS, and pure JavaScript. This calculator is simple, efficient, and easy to use.
 
-![old calculator version gif](https://github.com/geovannewashington/SimpleCalcJS-v1.0/assets/156543114/cda663ed-f8bd-43f9-9256-5f9444293609)
+![Calculator Image](./calculator-project/assets/images/app.png)
 
 ## Cloning the Repository
 To clone the repository and have a local copy of the calculator, use the following command in your terminal:
