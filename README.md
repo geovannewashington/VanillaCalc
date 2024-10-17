@@ -13,11 +13,11 @@ git clone https://github.com/geovannewashington/SimpleCalcJS-v1.5.git
 cd SimpleCalcJS-v1.5
 ```
 
-## Test on CodePen
+## Preview the project:
 
-If you prefer, you can test the calculator directly on CodePen by clicking the link below:
+If you prefer, you can test the calculator directly by clicking the link below:
 
-[View on CodePen](https://codepen.io/geovannewashington/pen/MWxdjWd)
+[Preview]([https://codepen.io/geovannewashington/pen/MWxdjWd](https://simple-calc-js-v1-5.vercel.app/))
 
 ## Changes from Version 1.0 to Version 1.5
 
