@@ -33,13 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
 
             if (result === undefined || result === null || isNaN(result)) {
+                playErrorSound();
                 errorbox.style.display = 'block';
                 errorbox.innerText = errorMessage;
             }
-            
+            playSucessSound();
             clearErrorMsg();
             display.value = result;
         } catch (error) {
+            playErrorSound();
             errorbox.style.display = 'block';
             errorbox.innerText = errorMessage;
             console.warn('An error ocurred: ', error);
@@ -70,8 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const playClickSound = () => { 
+        const click = new Audio('../../audio/click.mp3');
+        click.play();
+    };
+
+    const playErrorSound = () => {
+        const error = new Audio('../../audio/error.mp3');
+        error.play();
+    }
+
+    const playSucessSound = () => {
+        const sucess = new Audio('../../audio/sucess.mp3');
+        sucess.play();
+    }
+
     const handleButtonClick = () => {
         document.querySelector('#keys').addEventListener('click', (event) => {
+            playClickSound();
             const el = event.target.closest('.btn, .btn-clear, .btn-delete, .btn-solve');
             if (!el) return;
 
