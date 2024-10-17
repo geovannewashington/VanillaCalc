@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.querySelector('#display');
+    display.focus();
 
     const appendToDisplay = value => {
         const lastDigit = display.value.slice(-1);

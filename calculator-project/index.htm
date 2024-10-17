@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>SimpleCalcJS-V1.5</title>
 </head>
-
 <body>
     <div id="calculator">
-        <textarea id="display" rows="1" wrap="off"></textarea>
+        <div id="display-container">
+            <textarea id="display" rows="1" wrap="off"></textarea>
+            <div id="cursor"></div> <!-- Blinking cursor -->
+        </div>
 
         <hr style="width: 90%;">
 
@@ -18,7 +20,7 @@
             <button class="btn">7</button>
             <button class="btn">8</button>
             <button class="btn">9</button>
-            <button class="btn"><span style="color: #9cdc64;">-</button>
+            <button class="btn"><span style="color: #9cdc64;">-</span></button>
             <button class="btn">4</button>
             <button class="btn">5</button>
             <button class="btn">6</button>
@@ -29,7 +31,6 @@
             <button class="btn"><span style="color: #9cdc64;">&#xF7;</span></button>
             <button class="btn">0</button>
             <button class="btn">.</button>
-            <!-- Action Buttons: -->
             <button class="btn-solve" style="background-color: #427e04;">=</button>
             <button class="btn-clear"><span style="color: #cf6e5d;">C</span></button>
             <button class="btn-delete">&crarr;</button>

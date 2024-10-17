@@ -20,30 +20,45 @@ body {
     max-width: 500px;
     overflow: hidden;
     user-select: none;
+    position: relative;
+}
+
+#display-container {
+    position: relative;
+    width: 100%;
 }
 
 #display {
-    overflow-y: hidden;
-    overflow-x: scroll;
-    width: 92%;
+    width: 94%;
     padding: 20px;
     font-size: 5rem;
     text-align: right;
     border: none;
     background-color: var(--background-color);
     color: #fff;
+    resize: none;
+    overflow-x: auto;
+    caret-color: transparent; /* Hide native cursor */
     position: relative;
+    box-sizing: border-box;
 }
 
-#display::after {
-    content: '|';
+#display:focus {
+    outline: none;
+    border: none;
+}
+
+#cursor {
     position: absolute;
-    right: 10px;
+    right: 25px; /* Adjust this to fit within the textarea padding */
     top: 50%;
     transform: translateY(-50%);
-    color: var(--cursor-color);
-    font-size: 5rem;
-    animation: blink 1s infinite;
+    width: 3px;
+    height: 5rem;
+    background-color: var(--cursor-color);
+    z-index: 2;
+    animation: blink 700ms infinite;
+    pointer-events: none; /* Prevent interaction */
 }
 
 @keyframes blink {
