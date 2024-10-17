@@ -30,6 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    //locking the display focus
+    display.addEventListener('blur', () => {
+        setTimeout(() => {
+            display.focus();
+        }, 0);
+    });
+
     const pressEnter = () => {
         document.addEventListener('keyup', (event) => {
             if (event.key === 'Enter') {
