@@ -13,12 +13,6 @@ git clone https://github.com/geovannewashington/SimpleCalcJS-v1.5.git
 cd SimpleCalcJS-v1.5
 ```
 
-## Preview the project:
-
-If you prefer, you can test the calculator directly by clicking the link below:
-
-[Preview](https://codepen.io/geovannewashington/pen/MWxdjWd](https://simple-calc-js-v1-5.vercel.app/)
-
 ## Changes from Version 1.0 to Version 1.5
 
 - **New Design**: updated the layout to look a little more like the samsung calculator app.
