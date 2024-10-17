@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: hsl(0, 0%, 95%);
 }
 
@@ -17,6 +17,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     border-radius: 15px;
+    width: 90vw;
     max-width: 500px;
     overflow: hidden;
     user-select: none;
@@ -29,17 +30,16 @@ body {
 }
 
 #display {
-    width: 94%;
+    width: 93%;
     padding: 20px;
-    font-size: 5rem;
+    font-size: 4rem; /* Increased font size for better visibility */
     text-align: right;
     border: none;
     background-color: var(--background-color);
     color: #fff;
     resize: none;
     overflow-x: auto;
-    caret-color: transparent; /* Hide native cursor */
-    position: relative;
+    caret-color: transparent;
     box-sizing: border-box;
 }
 
@@ -50,15 +50,15 @@ body {
 
 #cursor {
     position: absolute;
-    right: 25px; /* Adjust this to fit within the textarea padding */
+    right: 25px;
     top: 50%;
     transform: translateY(-50%);
     width: 3px;
-    height: 5rem;
+    height: 4rem; /* Increased height for better visibility */
     background-color: var(--cursor-color);
     z-index: 2;
     animation: blink 700ms infinite;
-    pointer-events: none; /* Prevent interaction */
+    pointer-events: none;
 }
 
 @keyframes blink {
@@ -74,21 +74,21 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    padding: 25px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 button {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+    width: 100%;
+    aspect-ratio: 1/1; /* Ensure buttons are square */
+    border-radius: 50%;
     border: none;
     background-color: var(--btn-background);
-    font-size: 3rem;
+    font-size: 2.5rem; /* Adjusted font size for buttons */
     font-weight: bold;
     cursor: pointer;
     color: #fff;
     -webkit-tap-highlight-color: transparent;
-    -tap-highlight-color: transparent;
 }
 
 button:hover {
@@ -97,6 +97,40 @@ button:hover {
 
 button:active {
     background-color: hsl(0, 0%, 20%);
-    font-size: 2.0rem;
+    font-size: 2rem; /* Adjusted for a better transition */
     transition: 40ms;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 600px) {
+    #display {
+        font-size: 3.5rem; /* Adjusted for smaller screens */
+        padding: 15px;
+    }
+
+    #cursor {
+        height: 3rem; /* Adjusted cursor height */
+    }
+
+    button {
+        font-size: 1.8rem; /* Adjusted button font size */
+    }
+}
+
+@media (max-width: 400px) {
+    #calculator {
+        width: 95vw;
+    }
+
+    #display {
+        font-size: 3rem; /* Adjusted for smaller devices */
+    }
+
+    #cursor {
+        height: 2.5rem; /* Further adjustment for cursor height */
+    }
+
+    button {
+        font-size: 1.5rem; /* Adjusted button font size */
+    }
 }
