@@ -2,6 +2,14 @@
     --background-color: #010101;
     --btn-background: #171717;
     --cursor-color: #fff;
+    --light-mode-display-bg: #000;
+    /* Black background for light mode */
+    --dark-mode-display-bg: #808080;
+    /* Gray background for dark mode */
+    --light-mode-display-color: #fff;
+    /* White text for light mode */
+    --dark-mode-display-color: #fff;
+    /* White text for dark mode */
 }
 
 body {
@@ -40,15 +48,20 @@ body {
 #display {
     width: 93%;
     padding: 20px;
-    font-size: 4rem; /* Increased font size for better visibility */
+    font-size: 4rem;
+    /* Increased font size for better visibility */
     text-align: right;
     border: none;
-    background-color: var(--background-color);
-    color: #fff;
+    background-color: var(--light-mode-display-bg);
+    /* Light mode background */
+    color: var(--light-mode-display-color);
+    /* Light mode text color */
     resize: none;
     overflow-x: auto;
     caret-color: transparent;
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition */
 }
 
 #display:focus {
@@ -62,7 +75,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     width: 3px;
-    height: 4rem; /* Increased height for better visibility */
+    height: 4rem;
+    /* Increased height for better visibility */
     background-color: var(--cursor-color);
     z-index: 2;
     animation: blink 700ms infinite;
@@ -70,10 +84,14 @@ body {
 }
 
 @keyframes blink {
-    0%, 50% {
+
+    0%,
+    50% {
         opacity: 1;
     }
-    51%, 100% {
+
+    51%,
+    100% {
         opacity: 0;
     }
 }
@@ -88,11 +106,13 @@ body {
 
 button {
     width: 100%;
-    aspect-ratio: 1/1; /* Ensure buttons are square */
+    aspect-ratio: 1/1;
+    /* Ensure buttons are square */
     border-radius: 50%;
     border: none;
     background-color: var(--btn-background);
-    font-size: 2.5rem; /* Adjusted font size for buttons */
+    font-size: 2.5rem;
+    /* Adjusted font size for buttons */
     font-weight: bold;
     cursor: pointer;
     color: #fff;
@@ -105,23 +125,27 @@ button:hover {
 
 button:active {
     background-color: hsl(0, 0%, 20%);
-    font-size: 2rem; /* Adjusted for a better transition */
+    font-size: 2rem;
+    /* Adjusted for a better transition */
     transition: 40ms;
 }
 
 /* Media Queries for smaller screens */
 @media (max-width: 600px) {
     #display {
-        font-size: 3.5rem; /* Adjusted for smaller screens */
+        font-size: 3.5rem;
+        /* Adjusted for smaller screens */
         padding: 15px;
     }
 
     #cursor {
-        height: 3rem; /* Adjusted cursor height */
+        height: 3rem;
+        /* Adjusted cursor height */
     }
 
     button {
-        font-size: 1.8rem; /* Adjusted button font size */
+        font-size: 1.8rem;
+        /* Adjusted button font size */
     }
 }
 
@@ -131,14 +155,30 @@ button:active {
     }
 
     #display {
-        font-size: 3rem; /* Adjusted for smaller devices */
+        font-size: 3rem;
+        /* Adjusted for smaller devices */
     }
 
     #cursor {
-        height: 2.5rem; /* Further adjustment for cursor height */
+        height: 2.5rem;
+        /* Further adjustment for cursor height */
     }
 
     button {
-        font-size: 1.5rem; /* Adjusted button font size */
+        font-size: 1.5rem;
+        /* Adjusted button font size */
     }
+}
+
+/* Dark mode styles */
+.dark-mode {
+    --background-color: #181818;
+    /* Dark background for calculator */
+    --btn-background: #2e2e2e;
+    /* Darker button background */
+    --light-mode-display-bg: #2e2e2e;
+    /* Gray background for display */
+    --light-mode-display-color: #fff;
+    /* White text for dark mode */
+    background-color: var(--background-color);
 }

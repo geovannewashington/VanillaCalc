@@ -1,110 +1,78 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const display = document.querySelector('#display');
-    const errorbox = document.querySelector('#error-msg');
-    const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+document.addEventListener("DOMContentLoaded", () => {
+  const display = document.querySelector("#display");
+  const errorbox = document.querySelector("#error-msg");
+  const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+  const btnToggleDarkMode = document.querySelector(".btn-toggle-dark-mode");
 
-    display.focus();
+  display.focus();
 
-    const appendToDisplay = value => {
-        const lastDigit = display.value.slice(-1);
-        
-        const isLastCharOperator = ['+', '-', '×', '÷'].includes(lastDigit);
-        if (isLastCharOperator && ['+', '-', '×', '÷'].includes(value)) {
-            deleteLastChar();
-        }
-        display.value += value;
-        autoScroll();
-    };
+  const appendToDisplay = (value) => {
+    const lastDigit = display.value.slice(-1);
+    const isLastCharOperator = ["+", "-", "×", "÷"].includes(lastDigit);
+    if (isLastCharOperator && ["+", "-", "×", "÷"].includes(value)) {
+      deleteLastChar();
+    }
+    display.value += value;
+    autoScroll();
+  };
 
-    const clearDisplay = () => { 
+  const clearDisplay = () => {
+    clearErrorMsg();
+    display.value = "";
+    if (!isMobileDevice) display.focus();
+  };
+
+  const deleteLastChar = () => (display.value = display.value.slice(0, -1));
+  const autoScroll = () => (display.scrollLeft = display.scrollWidth);
+  const clearErrorMsg = () => {
+    errorbox.style.display = "none";
+    errorbox.innerText = "";
+  };
+  const performCalc = () => {
+    const errorMessage = "Malformed expression";
+    try {
+      const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
+      if (result === undefined || result === null || isNaN(result)) {
+        errorbox.style.display = "block";
+        errorbox.innerText = errorMessage;
+      } else {
         clearErrorMsg();
-        display.value = '';
-        if (!isMobileDevice) display.focus();
-    };
-
-    const deleteLastChar = () => display.value = display.value.slice(0, -1);
-    const autoScroll = () => display.scrollLeft = display.scrollWidth;
-    const clearErrorMsg = () => {
-        errorbox.style.display = 'none';
-        errorbox.innerText = '';
+        display.value = result;
+      }
+    } catch (error) {
+      errorbox.style.display = "block";
+      errorbox.innerText = errorMessage;
+      console.warn("An error occurred: ", error);
     }
-    const performCalc = () => {
-        const errorMessage = 'Malformed expression';
-        try {
-            const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
+  };
 
-            if (result === undefined || result === null || isNaN(result)) {
-                playErrorSound();
-                errorbox.style.display = 'block';
-                errorbox.innerText = errorMessage;
-            } else {
-                playSucessSound();
-                clearErrorMsg();
-                display.value = result;
-            }
-        } catch (error) {
-            playErrorSound();
-            errorbox.style.display = 'block';
-            errorbox.innerText = errorMessage;
-            console.warn('An error ocurred: ', error);
-        }
-    };
+  display.addEventListener("blur", () => {
+    if (!isMobileDevice) {
+      setTimeout(() => {
+        autoScroll();
+        display.focus();
+      }, 0);
+    }
+  });
 
-    //locking the display focus only in pc
-    display.addEventListener('blur', () => {
-        if (!isMobileDevice) {
-            setTimeout(() => {
-                autoScroll();
-                display.focus();
-            }, 0);
-        }
+  const handleButtonClick = () => {
+    document.querySelector("#keys").addEventListener("click", (event) => {
+      const el = event.target.closest(
+        ".btn, .btn-clear, .btn-delete, .btn-solve, .btn-toggle-dark-mode"
+      );
+      if (!el) return;
+
+      if (el.classList.contains("btn")) appendToDisplay(el.innerText);
+      if (el.classList.contains("btn-clear")) clearDisplay();
+      if (el.classList.contains("btn-delete")) deleteLastChar();
+      if (el.classList.contains("btn-solve")) performCalc();
+      if (el.classList.contains("btn-toggle-dark-mode")) toggleDarkMode();
     });
+  };
 
-    const handlePressEnter = () => {
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                performCalc();
-                display.focus();
-            }
-        });
-    };
+  const toggleDarkMode = () => {
+    document.body.classList.toggle("dark-mode");
+  };
 
-    const handleEscPress = () => {
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') clearDisplay();
-        });
-    }
-
-    const playClickSound = () => { 
-        const click = new Audio('../../audio/click.mp3');
-        click.play();
-    };
-
-    const playErrorSound = () => {
-        const error = new Audio('../../audio/error.mp3');
-        error.play();
-    }
-
-    const playSucessSound = () => {
-        const sucess = new Audio('../../audio/sucess.mp3');
-        sucess.play();
-    }
-
-    const handleButtonClick = () => {
-        document.querySelector('#keys').addEventListener('click', (event) => {
-            playClickSound();
-            const el = event.target.closest('.btn, .btn-clear, .btn-delete, .btn-solve');
-            if (!el) return;
-
-            if (el.classList.contains('btn')) appendToDisplay(el.innerText);
-            if (el.classList.contains('btn-clear')) clearDisplay();
-            if (el.classList.contains('btn-delete')) deleteLastChar();
-            if (el.classList.contains('btn-solve')) performCalc();
-        });
-    };
-
-    handlePressEnter();
-    handleButtonClick();
-    handleEscPress();
+  handleButtonClick();
 });
