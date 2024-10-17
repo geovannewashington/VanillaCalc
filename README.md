@@ -17,7 +17,7 @@ cd SimpleCalcJS-v1.5
 
 If you prefer, you can test the calculator directly by clicking the link below:
 
-[Preview]([https://codepen.io/geovannewashington/pen/MWxdjWd](https://simple-calc-js-v1-5.vercel.app/))
+[Preview](https://codepen.io/geovannewashington/pen/MWxdjWd](https://simple-calc-js-v1-5.vercel.app/)
 
 ## Changes from Version 1.0 to Version 1.5
 
