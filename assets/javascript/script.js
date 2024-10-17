@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearDisplay = () => { 
         clearErrorMsg();
         display.value = '';
-        display.focus();
+        if (!isMobileDevice) display.focus();
     };
 
     const deleteLastChar = () => display.value = display.value.slice(0, -1);
