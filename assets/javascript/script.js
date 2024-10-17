@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.querySelector('#display');
+    const errorbox = document.querySelector('#error-msg');
+
     display.focus();
 
     const appendToDisplay = value => {
@@ -13,20 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
         autoScroll();
     };
 
-    const clearDisplay = () => display.value = '';
+    const clearDisplay = () => { 
+        clearErrorMsg();
+        display.value = '';
+        display.focus();
+    };
+
     const deleteLastChar = () => display.value = display.value.slice(0, -1);
     const autoScroll = () => display.scrollLeft = display.scrollWidth;
-
+    const clearErrorMsg = () => {
+        errorbox.style.display = 'none';
+        errorbox.innerText = '';
+    }
     const performCalc = () => {
+        const errorMessage = 'Malformed expression';
         try {
             const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
+
             if (result === undefined || result === null || isNaN(result)) {
-                alert('Invalid Operation!');
-                return;
+                errorbox.style.display = 'block';
+                errorbox.innerText = errorMessage;
             }
+            
+            clearErrorMsg();
             display.value = result;
         } catch (error) {
-            alert('Invalid Operation!');
+            errorbox.style.display = 'block';
+            errorbox.innerText = errorMessage;
+            console.warn('An error ocurred: ', error);
         }
     };
 
@@ -38,14 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0);
     });
 
-    const pressEnter = () => {
-        document.addEventListener('keyup', (event) => {
+    const handlePressEnter = () => {
+        document.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
+                event.preventDefault();
                 performCalc();
                 display.focus();
             }
         });
     };
+
+    const handleEscPress = () => {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') clearDisplay();
+        });
+    }
 
     const handleButtonClick = () => {
         document.querySelector('#keys').addEventListener('click', (event) => {
@@ -59,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    pressEnter();
+    handlePressEnter();
     handleButtonClick();
+    handleEscPress();
 });

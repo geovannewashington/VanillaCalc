@@ -13,6 +13,14 @@ body {
     background-color: hsl(0, 0%, 95%);
 }
 
+#error-msg {
+    position: absolute;
+    color: hsl(0, 0%, 75%);
+    margin-left: 25px;
+    bottom: -20px;
+    display: none;
+}
+
 #calculator {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
