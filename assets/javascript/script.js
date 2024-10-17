@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //locking the display focus
     display.addEventListener('blur', () => {
         setTimeout(() => {
+            autoScroll();
             display.focus();
         }, 0);
     });
