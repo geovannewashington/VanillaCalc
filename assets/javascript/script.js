@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.querySelector('#display');
     const errorbox = document.querySelector('#error-msg');
+    const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
 
     display.focus();
 
@@ -48,12 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    //locking the display focus
+    //locking the display focus only in pc
     display.addEventListener('blur', () => {
-        setTimeout(() => {
-            autoScroll();
-            display.focus();
-        }, 0);
+        if (!isMobileDevice) {
+            setTimeout(() => {
+                autoScroll();
+                display.focus();
+            }, 0);
+        }
     });
 
     const handlePressEnter = () => {
