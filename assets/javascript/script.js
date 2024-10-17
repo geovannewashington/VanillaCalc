@@ -33,14 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const result = eval(display.value.replace(/÷/g, "/").replace(/×/g, "*"));
 
-            if (result === undefined || result === null || isNaN(result) || !result) {
+            if (result === undefined || result === null || isNaN(result)) {
                 playErrorSound();
                 errorbox.style.display = 'block';
                 errorbox.innerText = errorMessage;
+            } else {
+                playSucessSound();
+                clearErrorMsg();
+                display.value = result;
             }
-            playSucessSound();
-            clearErrorMsg();
-            display.value = result;
         } catch (error) {
             playErrorSound();
             errorbox.style.display = 'block';
