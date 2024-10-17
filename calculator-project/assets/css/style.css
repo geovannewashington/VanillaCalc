@@ -1,7 +1,8 @@
 :root {
     --background-color: #010101;
     --btn-background: #171717;
-}   
+    --cursor-color: #fff;
+}
 
 body {
     margin: 0;
@@ -31,6 +32,27 @@ body {
     border: none;
     background-color: var(--background-color);
     color: #fff;
+    position: relative;
+}
+
+#display::after {
+    content: '|';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cursor-color);
+    font-size: 5rem;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
 }
 
 #keys {
@@ -63,4 +85,3 @@ button:active {
     font-size: 2.0rem;
     transition: 40ms;
 }
-
