@@ -3,7 +3,7 @@
 ## Introduction
 This is version 1.5 of my calculator, developed with HTML, CSS, and pure JavaScript. This calculator is simple, efficient, and easy to use.
 
-![Calculator Image](./calculator-project/assets/images/app.png)
+![Calculator Image](./assets/images/app.png)
 
 ## Cloning the Repository
 To clone the repository and have a local copy of the calculator, use the following command in your terminal:
@@ -12,12 +12,6 @@ To clone the repository and have a local copy of the calculator, use the followi
 git clone https://github.com/geovannewashington/SimpleCalcJS-v1.5.git
 cd SimpleCalcJS-v1.5
 ```
-
-## Test on CodePen
-
-If you prefer, you can test the calculator directly on CodePen by clicking the link below:
-
-[View on CodePen](https://codepen.io/geovannewashington/pen/MWxdjWd)
 
 ## Changes from Version 1.0 to Version 1.5
 
